@@ -15,7 +15,7 @@ public class Mascota {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
-    private Long id;
+    private Long _id;
 
     private java.lang.String nombre;
 
@@ -46,12 +46,12 @@ public class Mascota {
     //   this.edad = age;
     // }
 
-    public Long getId() {
-        return id;
+    public Long get_id() {
+        return _id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void set_id(Long _id) {
+        this._id = _id;
     }
 
     public java.lang.String getNombre() {
@@ -96,7 +96,7 @@ public class Mascota {
 
     public Map<String, Object> makeDTO() {
         Map<String, Object> dto = new LinkedHashMap<>();
-        dto.put("_id", this.getId());
+        dto.put("_id", this.get_id());
         dto.put("nombre", this.getNombre());
         dto.put("edad", this.getEdad());
         dto.put("tipo", this.getTipo());

@@ -52,7 +52,7 @@ public class MascotaController {
         ResponseEntity<Map<String, Object>> responseEntity;
         System.out.println(nuevaMascota);
         mascotaRepository.save(nuevaMascota);
-        responseEntity = new ResponseEntity<>(this.makeMap("id", nuevaMascota.getId()), HttpStatus.CREATED);
+        responseEntity = new ResponseEntity<>(this.makeMap("id", nuevaMascota.get_id()), HttpStatus.CREATED);
         return responseEntity;
     }
 
@@ -72,8 +72,9 @@ public class MascotaController {
     @RequestMapping(path = "/mascotas", method = RequestMethod.PUT)
     public ResponseEntity<Map<String, Object>> updateMascota(@RequestBody Mascota mascotaActualizada) {
         ResponseEntity<Map<String, Object>> responseEntity;
+        System.out.println(mascotaActualizada.get_id());
         mascotaRepository.save(mascotaActualizada);
-        responseEntity = new ResponseEntity<>(HttpStatus.OK);
+        responseEntity = new ResponseEntity<>(this.makeMap("Mascota actualizada correctamente", mascotaActualizada.get_id()), HttpStatus.OK);
         return responseEntity;
     }
 
