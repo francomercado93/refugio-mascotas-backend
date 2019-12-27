@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 @Entity
 public class Mascota {
@@ -19,9 +21,9 @@ public class Mascota {
 
     private String tipo;
 
-    private java.lang.String descripcion;
+    private String descripcion;
 
-    private java.lang.String imagen;
+    private String imagen;
 
     private Integer edad;
 
@@ -90,5 +92,16 @@ public class Mascota {
 
     public void setEdad(Integer edad) {
         this.edad = edad;
+    }
+
+    public Map<String, Object> makeDTO() {
+        Map<String, Object> dto = new LinkedHashMap<>();
+        dto.put("id", this.getId());
+        dto.put("nombre", this.getNombre());
+        dto.put("edad", this.getEdad());
+        dto.put("tipo", this.getTipo());
+        dto.put("imagen", this.getImagen());
+        dto.put("descripcion", this.getDescripcion());
+        return dto;
     }
 }

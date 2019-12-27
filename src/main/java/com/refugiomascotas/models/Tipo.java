@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 @Entity
 public class Tipo {
@@ -38,5 +40,12 @@ public class Tipo {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public Map<String, Object> makeDTO() {
+        Map<String, Object> dto = new LinkedHashMap<>();
+        dto.put("id", this.getId());
+        dto.put("nombre", this.getNombre());
+        return dto;
     }
 }
