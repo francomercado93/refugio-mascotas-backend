@@ -96,7 +96,7 @@ public class Mascota {
 
     public Map<String, Object> makeDTO() {
         Map<String, Object> dto = new LinkedHashMap<>();
-        dto.put("id", this.getId());
+        dto.put("_id", this.getId());
         dto.put("nombre", this.getNombre());
         dto.put("edad", this.getEdad());
         dto.put("tipo", this.getTipo());
