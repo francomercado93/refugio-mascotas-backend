@@ -38,22 +38,24 @@ public class RefugioApplication extends SpringBootServletInitializer {
             tortuga = new Tipo("Tortuga");
             guacamayo = new Tipo("Guacamayo");
 
-            //Mascotas
-            pepe = new Mascota("Pepe trueno", "Gato", "gruñon y juguetón",
-                    "https://cdn2.traveler.es/uploads/images/thumbs/es/trav/3/s/2019/39/gatos_463_940x705.jpg", 3);
-            rafael = new Mascota("Rafael", "Tortuga", "le encanta la lechuga y pasear por la casa (si, también le gusta la pizza)",
-                    "https://siguealconejoblanco.es/wp-content/uploads/2010/07/Ninja-Turtle-in-Real-Life.jpg", 2);
-            yogui = new Mascota("Yogui", "Perro", "super activo, le gusta correr mucho",
-                    "https://static1.abc.es/media/recreo/2019/10/05/nori-perro-humano-kO2--620x349@abc.jpg", 1);
-            piolin = new Mascota("Piolin", "Guacamayo", "muy colorida, come frutas y ¡habla!",
-                    "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Ara_macao_qtl1.jpg/275px-Ara_macao_qtl1.jpg", 3);
-            gary = new Mascota("Gary", "Gato", "Es muy mimoso y marron",
-                    "https://estaticos.miarevista.es/media/cache/760x570_thumb/uploads/images/article/57725158a1d4251a098bca20/int-gatosiames.jpg", 14);
-
             tipoRepository.save(perro);
             tipoRepository.save(gato);
             tipoRepository.save(tortuga);
             tipoRepository.save(guacamayo);
+
+
+//            //Mascotas
+            pepe = new Mascota("Pepe trueno", gato, "gruñon y juguetón",
+                    "https://cdn2.traveler.es/uploads/images/thumbs/es/trav/3/s/2019/39/gatos_463_940x705.jpg", 3);
+            rafael = new Mascota("Rafael", tortuga, "le encanta la lechuga y pasear por la casa (si, también le gusta la pizza)",
+                    "https://siguealconejoblanco.es/wp-content/uploads/2010/07/Ninja-Turtle-in-Real-Life.jpg", 2);
+            yogui = new Mascota("Yogui", perro, "super activo, le gusta correr mucho",
+                    "https://static1.abc.es/media/recreo/2019/10/05/nori-perro-humano-kO2--620x349@abc.jpg", 1);
+            piolin = new Mascota("Piolin", guacamayo, "muy colorida, come frutas y ¡habla!",
+                    "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Ara_macao_qtl1.jpg/275px-Ara_macao_qtl1.jpg", 3);
+            gary = new Mascota("Gary", gato, "Es muy mimoso y marron",
+                    "https://estaticos.miarevista.es/media/cache/760x570_thumb/uploads/images/article/57725158a1d4251a098bca20/int-gatosiames.jpg", 14);
+
 
             mascotaRepository.save(pepe);
             mascotaRepository.save(rafael);

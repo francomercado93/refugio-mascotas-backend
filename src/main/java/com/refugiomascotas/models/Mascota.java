@@ -2,10 +2,7 @@ package com.refugiomascotas.models;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -17,9 +14,11 @@ public class Mascota {
     @GenericGenerator(name = "native", strategy = "native")
     private Long _id;
 
-    private java.lang.String nombre;
+    private String nombre;
 
-    private String tipo;
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "mascota_id")
+    private Tipo tipo;
 
     private String descripcion;
 
@@ -30,21 +29,13 @@ public class Mascota {
     public Mascota() {
     }
 
-    public Mascota(String name, String type, String desc, String img, Integer age) {
+    public Mascota(String name, Tipo type, String desc, String img, Integer age) {
         this.nombre = name;
         this.tipo = type;
         this.descripcion = desc;
         this.imagen = img;
         this.edad = age;
     }
-
-    // public Mascota(String name, Tipo type, String desc, String img, Integer age) {
-    //     this.nombre = name;
-    //     this.tipo = type;
-    //   this.descripcion = desc;
-    //   this.imagen = img;
-    //   this.edad = age;
-    // }
 
     public Long get_id() {
         return _id;
@@ -54,35 +45,35 @@ public class Mascota {
         this._id = _id;
     }
 
-    public java.lang.String getNombre() {
+    public String getNombre() {
         return nombre;
     }
 
-    public void setNombre(java.lang.String nombre) {
+    public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
-    public String getTipo() {
+    public Tipo getTipo() {
         return tipo;
     }
 
-    public void setTipo(String tipo) {
+    public void setTipo(Tipo tipo) {
         this.tipo = tipo;
     }
 
-    public java.lang.String getDescripcion() {
+    public String getDescripcion() {
         return descripcion;
     }
 
-    public void setDescripcion(java.lang.String descripcion) {
+    public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
 
-    public java.lang.String getImagen() {
+    public String getImagen() {
         return imagen;
     }
 
-    public void setImagen(java.lang.String imagen) {
+    public void setImagen(String imagen) {
         this.imagen = imagen;
     }
 
@@ -94,12 +85,16 @@ public class Mascota {
         this.edad = edad;
     }
 
+    public String getNombreTipo() {
+        return this.getTipo().getNombre();
+    }
+
     public Map<String, Object> makeDTO() {
         Map<String, Object> dto = new LinkedHashMap<>();
         dto.put("_id", this.get_id());
         dto.put("nombre", this.getNombre());
         dto.put("edad", this.getEdad());
-        dto.put("tipo", this.getTipo());
+        dto.put("tipo", this.getNombreTipo());
         dto.put("imagen", this.getImagen());
         dto.put("descripcion", this.getDescripcion());
         return dto;
